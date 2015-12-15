@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>9df010db-1995-4187-bcc6-d70f2a72732b</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>HitSongPredictor.py</StartupFile>
+    <StartupFile>song-stream-twitter.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -24,6 +24,7 @@
   <ItemGroup>
     <Compile Include="song-stream-twitter.py" />
     <Compile Include="HitSongPredictor.py" />
+    <Compile Include="Twittercredentials.py" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
