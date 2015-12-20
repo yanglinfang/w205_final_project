@@ -22,6 +22,12 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Echonestcredentials.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Echonestgenres.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="song-stream-twitter.py" />
     <Compile Include="HitSongPredictor.py" />
     <Compile Include="Twittercredentials.py" />
