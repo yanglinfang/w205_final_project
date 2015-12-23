@@ -49,3 +49,9 @@ SELECT * FROM Songs_youtube LIMIT 10;
 SELECT * FROM Songs_tweet WHERE position(title in 'Off Top') > 0;
 SELECT * FROM Songs_tweet WHERE tweet_count > 10;
 SELECT * FROM Songs_tweet WHERE tweet_count > 100 ORDER BY tweet_count DESC LIMIT 15;
+
+\o /songs_updated.csv;
+SELECT * FROM Songs;
+
+\o /songs_tweet_updated.csv;
+SELECT * FROM Songs_tweet;
