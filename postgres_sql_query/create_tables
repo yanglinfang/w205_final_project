@@ -1,0 +1,6 @@
+psql -U postgres
+CREATE TABLE Artists (
+	id varchar(50) PRIMARY KEY,
+	name varchar(50),
+	hotttnesss decimal
+);
