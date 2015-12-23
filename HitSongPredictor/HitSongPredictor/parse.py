@@ -55,7 +55,8 @@ class ParseTweet(Bolt):
             self.log('found %s records in tweet_count table where the title is in the tweet text.' % (len(records)))
             for rec in records:
                 uTitle = rec[0]
-                valid_words.append(uTitle)
+                valid_titles.append(uTitle)
+                self.log('song title mentioned in tweet is:%s' % (uTitle))
 
 
         if not valid_titles: return
