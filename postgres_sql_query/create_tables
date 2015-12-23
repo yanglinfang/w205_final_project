@@ -5,6 +5,8 @@ CREATE TABLE Artists (
 	hotttnesss decimal
 );
 
+COPY Artists FROM '/root/w205_final_project/Artists.txt' DELIMITER ',' CSV;
+
 CREATE TABLE Songs (
 	artist_id varchar(50),
 	artist_name varchar(50),
@@ -12,3 +14,5 @@ CREATE TABLE Songs (
 	id varchar(50) PRIMARY KEY,
 	title varchar(50)
 );
+
+COPY Songs FROM '/root/w205_final_project/Songs.txt' DELIMITER ',' CSV;
