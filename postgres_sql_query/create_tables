@@ -14,7 +14,34 @@ CREATE TABLE Songs (
 	artist_id varchar(250),
     title varchar(250),
 	id varchar(250),
-	artist_hotttnesss varchar(250)
+	artist_hotttnesss varchar(250),
+	song_hotttnesss varchar(250)
 );
 
 COPY Songs FROM '/Songs.txt' DELIMITER ',' CSV;
+
+SELECT * FROM Artists LIMIT 10;
+SELECT COUNT(DISTINCT id) FROM Artists;
+SELECT * FROM Songs LIMIT 10;
+SELECT COUNT(DISTINCT id) FROM Songs;
+
+DROP TABLE Songs_tweet;
+CREATE TABLE Songs_tweet (
+    title varchar(250),
+	id varchar(250),
+	tweet_count bigint
+);
+
+INSERT INTO Songs_tweet SELECT DISTINCT title, id, 0 FROM Songs;
+
+DROP TABLE Songs_youtube;
+CREATE TABLE Songs_youtube (
+    title varchar(250),
+	id varchar(250),
+	youtube_count bigint
+);
+
+INSERT INTO Songs_youtube SELECT DISTINCT title, id, 0 FROM Songs;
+
+SELECT * FROM Songs_tweet LIMIT 10;
+SELECT * FROM Songs_youtube LIMIT 10;
