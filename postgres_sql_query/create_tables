@@ -54,4 +54,4 @@ SELECT * FROM Songs_tweet WHERE tweet_count > 100 ORDER BY tweet_count DESC LIMI
 SELECT * FROM Songs;
 
 \o /songs_tweet_updated.csv;
-SELECT * FROM Songs_tweet;
+SELECT * FROM Songs_tweet
