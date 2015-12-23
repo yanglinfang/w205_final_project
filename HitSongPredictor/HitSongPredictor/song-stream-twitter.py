@@ -1,4 +1,4 @@
-"""
+﻿"""
 Using Twitter stream API, print all the tweets in the stream containing the term "Hello" in a 1 min period
 
 """
@@ -8,6 +8,7 @@ from tweepy import Stream
 from Twittercredentials import *
 from time import time,ctime
 import simplejson
+import psycopg2
 
 class StdOutListener(StreamListener):
    
@@ -20,7 +21,7 @@ class StdOutListener(StreamListener):
         print "Start Time = %s"%(str(ctime()))
         self.timer = timer
         self.count = 0
-        
+        self.conn = psycopg2.connect(database="postgres", user="postgres", password="pass", host="localhost", port="5432")
 
     def on_data(self, data):
         try:
@@ -30,8 +31,20 @@ class StdOutListener(StreamListener):
                 self.dataJson =simplejson.loads(data[:-1])
                 self.dataJsonText = self.dataJson["text"].lower()
                 self.count += 1
-                if "Hello" in self.dataJsonText:
-                    print self.dataJsonText
+
+                cur.execute("SELECT title, id, tweet_count from Songs_tweet");
+                records = cur.fetchall()
+                if len(records) > 0:
+                   
+                    for rec in records:
+                        uTitle = rec[0]
+                        uId = rec[1]
+                        uCount = rec[2]
+                        if uTitle.lower() in self.dataJsonText.lower():
+                            uCount = uCount + 1
+                            cur.execute("UPDATE tweet_count SET count=%s WHERE id=%s", (uCount, uId));
+                            self.conn.commit()
+                            print self.dataJsonText
 
             else:
                 print "Count== ",self.count
