@@ -33,7 +33,7 @@ class WordCounter(Bolt):
             for rec in records:
                 self.log('title = %s' % (rec[0]))
                 self.log('tweet_count = %s' % (rec[1]))
-            cur.execute("UPDATE Tweetwordcount SET tweet_count=%s WHERE title=%s", (uCount + rec[1], uWord));
+            cur.execute("UPDATE Songs_tweet SET tweet_count=%s WHERE title=%s", (uCount + rec[1], uWord));
             self.conn.commit()
 
 			
