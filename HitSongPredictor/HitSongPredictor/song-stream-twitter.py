@@ -35,7 +35,7 @@ class StdOutListener(StreamListener):
                 cur.execute("SELECT title, id, tweet_count from Songs_tweet");
                 records = cur.fetchall()
                 if len(records) > 0:
-                   
+                    self.log('found %s songs in tweet_count table, before update:' % (len(records)))
                     for rec in records:
                         uTitle = rec[0]
                         uId = rec[1]
@@ -44,6 +44,7 @@ class StdOutListener(StreamListener):
                             uCount = uCount + 1
                             cur.execute("UPDATE tweet_count SET count=%s WHERE id=%s", (uCount, uId));
                             self.conn.commit()
+                            self.log('found %s songs in tweet_count table, before update:' % (len(records)))
                             print self.dataJsonText
 
             else:

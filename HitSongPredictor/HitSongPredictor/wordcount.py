@@ -1,4 +1,4 @@
-from __future__ import absolute_import, print_function, unicode_literals
+﻿from __future__ import absolute_import, print_function, unicode_literals
 
 from collections import Counter
 from streamparse.bolt import Bolt
@@ -25,28 +25,25 @@ class WordCounter(Bolt):
         uWord = word
         uCount = self.counts[word] + 1
 
-        cur.execute("SELECT word, count from Tweetwordcount WHERE word=%s",[uWord]);
+        cur.execute("SELECT title, tweet_count FROM Songs_tweet WHERE title=%s",[uWord]);
         records = cur.fetchall()
         #update or insert
         if len(records) > 0:
             self.log('found %s records, before update:' % (len(records)))
             for rec in records:
-                self.log('word = %s' % (rec[0]))
-                self.log('count = %s' % (rec[1]))
-            cur.execute("UPDATE Tweetwordcount SET count=%s WHERE word=%s", (uCount + rec[1], uWord));
+                self.log('title = %s' % (rec[0]))
+                self.log('tweet_count = %s' % (rec[1]))
+            cur.execute("UPDATE Tweetwordcount SET tweet_count=%s WHERE title=%s", (uCount + rec[1], uWord));
             self.conn.commit()
-        else:
-            self.log('record does not exist, try insert')
-            cur.execute("INSERT INTO Tweetwordcount (word,count) VALUES (%s, %s)", (uWord, uCount));
-            self.conn.commit()
+
 			
         #Select
-        cur.execute("SELECT word, count from Tweetwordcount WHERE word=%s",[uWord]);
+        cur.execute("SELECT title, tweet_count FROM Songs_tweet WHERE title=%s",[uWord]);
         records = cur.fetchall()
         self.log('found %s records, after update:' % (len(records)))
         for rec in records:
-            self.log('word = %s' % (rec[0]))
-            self.log('count = %s' % (rec[1]))
+            self.log('title = %s' % (rec[0]))
+            self.log('tweet_count = %s' % (rec[1]))
         
 
         # Increment the local count

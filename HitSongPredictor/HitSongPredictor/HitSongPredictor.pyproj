@@ -28,9 +28,12 @@
     <Compile Include="Echonestgenres.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="parse.py" />
     <Compile Include="song-stream-twitter.py" />
     <Compile Include="HitSongPredictor.py" />
+    <Compile Include="tweets.py" />
     <Compile Include="Twittercredentials.py" />
+    <Compile Include="wordcount.py" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
