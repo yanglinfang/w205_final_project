@@ -1,8 +1,8 @@
 psql -U postgres
 DROP TABLE Artists;
 CREATE TABLE Artists (
+    name varchar(250),
 	id varchar(250),
-	name varchar(250),
 	hotttnesss varchar(250)
 );
 
@@ -10,11 +10,11 @@ COPY Artists FROM '/Artists.txt' DELIMITER ',' CSV;
 
 DROP TABLE Songs;
 CREATE TABLE Songs (
+    artist_name varchar(250),
 	artist_id varchar(250),
-	artist_name varchar(250),
-	artist_hotttnesss varchar(250),
+    title varchar(250),
 	id varchar(250),
-	title varchar(250)
+	artist_hotttnesss varchar(250)
 );
 
 COPY Songs FROM '/Songs.txt' DELIMITER ',' CSV;
