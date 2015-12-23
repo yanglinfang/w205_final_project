@@ -4,3 +4,11 @@ CREATE TABLE Artists (
 	name varchar(50),
 	hotttnesss decimal
 );
+
+CREATE TABLE Songs (
+	artist_id varchar(50),
+	artist_name varchar(50),
+	artist_hotttnesss decimal,
+	id varchar(50) PRIMARY KEY,
+	title varchar(50)
+);
