@@ -48,7 +48,7 @@ class ParseTweet(Bolt):
         valid_titles = []
         cur = self.conn.cursor()
         
-        processed_tweet = " ".join(["%s=%s" % (k, v) for k, v in valid_words])
+        processed_tweet = " ".join(["%s" % (v) for v in valid_words])
         cur.execute("SELECT title FROM Songs_tweet WHERE position(title in %s) > 0;",[processed_tweet]);
         records = cur.fetchall()
         if len(records) > 0:
