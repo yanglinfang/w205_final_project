@@ -1,18 +1,20 @@
 psql -U postgres
+DROP TABLE Artists;
 CREATE TABLE Artists (
-	id varchar(50) PRIMARY KEY,
-	name varchar(50),
-	hotttnesss decimal
+	id varchar(250),
+	name varchar(250),
+	hotttnesss varchar(250)
 );
 
-COPY Artists FROM '/root/w205_final_project/Artists.txt' DELIMITER ',' CSV;
+COPY Artists FROM '/Artists.txt' DELIMITER ',' CSV;
 
+DROP TABLE Songs;
 CREATE TABLE Songs (
-	artist_id varchar(50),
-	artist_name varchar(50),
-	artist_hotttnesss decimal,
-	id varchar(50) PRIMARY KEY,
-	title varchar(50)
+	artist_id varchar(250),
+	artist_name varchar(250),
+	artist_hotttnesss varchar(250),
+	id varchar(250),
+	title varchar(250)
 );
 
-COPY Songs FROM '/root/w205_final_project/Songs.txt' DELIMITER ',' CSV;
+COPY Songs FROM '/Songs.txt' DELIMITER ',' CSV;
